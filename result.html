@@ -19,7 +19,7 @@
           }
           if (window.ReactNativeWebView) {
               if (window.ReactNativeWebView.postMessage) { 
-                  window.ReactNativeWebView.postMessage(data)
+                  window.ReactNativeWebView.postMessage(JSON.stringify(res))
               }
           }
           if (typeof Android !== "undefined" && Android !== null) {
