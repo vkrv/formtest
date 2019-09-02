@@ -6,13 +6,17 @@
     <body onload="sendMessage()">
       <script>
         function sendMessage() {
-          var res = {}
-          window.location.search.substr(1).split("&").forEach(function (v){
-              var pair = v.split("=");
-              res[pair[0]] = pair[1];
-            })
-          console.log(res);
-          parent.postMessage(JSON.stringify(res), "*")
+          try {
+            var res = {}
+            window.location.search.substr(1).split("&").forEach(function (v){
+                var pair = v.split("=");
+                res[pair[0]] = pair[1];
+              })
+            console.log(res);
+            parent.postMessage(JSON.stringify(res), "*")
+          } catch (e) {
+              console.log("Error, gentlemen" + e)
+          }
           if (window.ReactNativeWebView) {
               if (window.ReactNativeWebView.postMessage) { 
                   window.ReactNativeWebView.postMessage(data)
