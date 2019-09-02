@@ -13,6 +13,9 @@
             })
           console.log(res);
           parent.postMessage(JSON.stringify(res), "*")
+          if (window.ReactNativeWebView.postMessage) { 
+              window.ReactNativeWebView.postMessage(data)
+          }
         }
       </script>
         This is page is designed to be final page.
