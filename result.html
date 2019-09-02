@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
     </head>
-    <body>
+    <body onload="sendMessage()">
       <script>
         function sendMessage() {
           var res = {}
@@ -13,12 +13,7 @@
             })
           console.log(res);
           parent.postMessage(JSON.stringify(res), "*")
-          if (window.ReactNativeWebView.postMessage) { 
-              window.ReactNativeWebView.postMessage(data)
-          }
-		window.onload = function() { 
-			sendMessage()
-		}
+        }
       </script>
         This is page is designed to be final page.
     </body>
