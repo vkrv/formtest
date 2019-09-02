@@ -9,6 +9,7 @@
         <script>
           function processThings() {
             var form = document.getElementById('3dform')
+            console.log(window.location.search);
             window.location.search.substr(1).split("&").forEach(function (v){
               var pair = v.split("=");
               if (pair[0] === "IssuerUrl") {
