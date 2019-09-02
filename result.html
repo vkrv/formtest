@@ -18,6 +18,9 @@
                   window.ReactNativeWebView.postMessage(data)
               }
           }
+          if (typeof Android !== "undefined" && Android !== null) {
+              Android.showToast("Test Denis");
+          }
         }
       </script>
         This is page is designed to be final page.
