@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
     </head>
-    <body onload="processThings()">
+    <body onload="process()">
         <form method="POST" id="3dform">
         </form>
         <script>
@@ -25,6 +25,35 @@
               console.log(form);
               form.submit();
           }
+        </script>
+        <script>
+            function getParameterByName(name, url) {
+               name = name.replace(/[\[\]]/g, '\\$&');
+               var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+               results = regex.exec(url);
+               if (!results) return null;
+               if (!results[2]) return '';
+               return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+            
+            function process() {
+                var form = document.getElementById('3dform')
+                console.log("New process");
+                window.location.search.substr(1).split("&").forEach(function (v){
+                   var pair = v.split("=");
+                   if (pair[0] === "IssuerUrl") {
+                       form.action = getParameterByName(pair[0], pair[1])
+                       return
+                }
+                var input = document.createElement("input");
+                input.type = "hidden";
+                input.name = pair[0];
+                input.value = getParameterByName(pair[0], pair[1]);
+                form.appendChild(input);
+              })
+              console.log(form);
+              form.submit();
+            }
         </script>
     </body>
 </html>
