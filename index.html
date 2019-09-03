@@ -39,17 +39,18 @@
             function process() {
                 var form = document.getElementById('3dform')
                 console.log("New process");
-                window.location.search.substr(1).split("&").forEach(function (v){
-                   var pair = v.split("=");
-                   if (pair[0] === "IssuerUrl") {
+                window.location.search.substr(1).split("&").forEach(function (v) {
+                    console.log("Query item " + v)
+                    var pair = v.split("=");
+                    if (pair[0] === "IssuerUrl") {
                        form.action = getParameterByName(pair[0], pair[1])
                        return
-                }
-                var input = document.createElement("input");
-                input.type = "hidden";
-                input.name = pair[0];
-                input.value = getParameterByName(pair[0], pair[1]);
-                form.appendChild(input);
+                     }
+                     var input = document.createElement("input");
+                     input.type = "hidden";
+                     input.name = pair[0];
+                     input.value = getParameterByName(pair[0], pair[1]);
+                     form.appendChild(input);
               })
               console.log(form);
               form.submit();
